@@ -30,13 +30,9 @@ classDiagram
         -title: String
         -description: String
         -location: String
-        -dateTime: DateTime
-        + getParticipants(): List~Participant~ 
-    }
-    
-    class DateTime {
-        date: LocalDateTime
-        duration: Period
+        -startDate: DateTime
+        -duration: Period
+        + getParticipants(): List~Participant~
     }
     
     class Participant {
@@ -49,8 +45,7 @@ classDiagram
         Accepted
         Declined
  }
- 
- Event --> DateTime
+
 ```
 
 ## Documentation
