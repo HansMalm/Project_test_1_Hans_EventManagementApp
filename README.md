@@ -37,24 +37,25 @@ classDiagram
     
     class Participant {
         -name: String
+        -role: String
     }
     
     class InviteStatus {
         <<enumeration>>
-        Pending
-        Accepted
-        Declined
+        PENDING
+        ACCEPTED
+        DECLINED
  }
 
 ```
 
 ## Documentation
-# First problem analysis and design choices.
+### First problem analysis and design choices.
 Model to contain Event, Participant and InviteStatus classes for the basic building blocks. Consider creating a separate
 class for DateTime since it contains multiple variables. an event has both a starting date and a time period.
 Consider extending Event class to make events share core features but separate specific features.
 
-Data access objects
+Data access objects,
 
 
 DatabaseConnection for separate storage of connection information.
