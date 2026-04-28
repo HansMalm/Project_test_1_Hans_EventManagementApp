@@ -21,7 +21,7 @@ is invited to and list participants that accepted invitation to an event.
 ### Error Handling and Functionality
 The system must ensure correct time range and capacity input for events. Prevent duplicate invitations and overbooking.
 
-Start of UML Class Diagram
+## UML Class Diagram
 ```mermaid
 classDiagram
     direction LR
@@ -52,3 +52,14 @@ classDiagram
  
  Event --> DateTime
 ```
+
+## Documentation
+# First problem analysis and design choices.
+Model to contain Event, Participant and InviteStatus classes for the basic building blocks. Consider creating a separate
+class for DateTime since it contains multiple variables. an event has both a starting date and a time period.
+Consider extending Event class to make events share core features but separate specific features.
+
+Data access objects
+
+
+DatabaseConnection for separate storage of connection information.
