@@ -70,7 +70,7 @@ DatabaseConnection for separate storage of connection information.
 
 ### Program runtime Algorithm
 Start  
-Display Main Menu  
+Display Main Menu
 1. Create new Event
 2. Register Participant
 3. View Events
@@ -80,5 +80,49 @@ Display Main Menu
 Option 1 Create new Event:  
 Display Location Options  
 1\. Great Hall 2. Auditorium 3. Workshop 4. Garden  
-Input Location  
-Input Event Title, Description, StartDate, Duration and Capacity.  
+Input Location number  
+Input Event details: Title, Description, StartDate, Duration and Capacity.  
+Ask to invite participants Yes/No.  
+Option No, Display Event Created Successfully. Return to Main Menu.  
+Option Yes, Display Invite Participants Menu
+Display a numbered list of All Registered Participants that are not invited to this Event.  
+Input number for each participant to invite. Input 0 when finished.  
+Display invitations sent Successfully. Return to Main Menu.
+
+Option 2 Register Participant:  
+Ask to input name or 0 to exit.  
+Input name.  
+Display role must be individual or name of organization.  
+Input role.  
+Display Participant Registered Successfully.  
+Option 0 abort Registration and return to Main Menu.
+
+Option 3 view Events:  
+Display a numbered list of All Events with their Title and StartDate.  
+Ask to input number of an Event to view or 0 to Exit.  
+Input Event number.  
+Display All Details of the selected Event.  
+Display Event Menu
+1. Invite Participants  
+   Display Invite Participants Menu, see above description.
+2. View All Attending Participants  
+   Display a List of All Attending.
+3. View All Invited Participants  
+   Display a List of All Invited.
+4. Exit  
+   Return to Main Menu.
+
+Option 4 View Participants:  
+Display a numbered list of All Registered Participants with their name and role.  
+Ask to input number of a Participant to view or 0 to Exit.  
+Display Participant Menu
+1. View Events Attending  
+   Display a List of All Events the Participant is Attending.
+2. View Event Invitations  
+   Display a List of All Events the Participant is Invited to.
+3. Exit  
+   Return to Main Menu.
+
+Option 5 Exit:  
+Display Exit program.  
+End  
