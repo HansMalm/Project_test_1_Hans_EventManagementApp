@@ -136,7 +136,7 @@ workshop. Now I add controller package with the class EventAppController and giv
 main program loop. Then I add the view package with the class EventAppView and give it the first methods  
 displayMainMenu and getUserINput. I start implementing.
 
-**After second implementations:**
+**After second implementations:**  
 I realize that it makes sense to create a separate class to represent Invitations. It will contain the InviteStatus  
 enum in its field. And I create the InvitationDao too. Then add the tables participants and invitations to the  
 database that already contains an app_events table. All tables only have the basic columns of id and or title and  
