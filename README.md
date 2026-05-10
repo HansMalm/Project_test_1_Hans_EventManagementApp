@@ -25,36 +25,92 @@ The system must ensure correct time range and capacity input for events. Prevent
 ```mermaid
 classDiagram
     direction LR
+    namespace model {
+      class Event {
+         -id: int
+         -title: String
+         -description: String
+         -location: Location
+         -startDate: DateTime
+         -duration: Period
+         -capacity: int
 
-    class Event {
-        -title: String
-        -description: String
-        -location: Location
-        -startDate: DateTime
-        -duration: Period
-        -capacity: int
-        + getParticipants(): List~Participant~
-    }
-    
-    class Location {
-        <<enumeration>>
-        GREAT HALL
-        AUDITORIUM
-        WORKSHOP
-        GARDEN
-    }
-    
-    class Participant {
-        -name: String
-        -role: String
-    }
-    
-    class InviteStatus {
-        <<enumeration>>
-        PENDING
-        ACCEPTED
-        DECLINED
- }
+      }
+
+      class Location {
+         <<enumeration>>
+         GREAT HALL
+         AUDITORIUM
+         WORKSHOP
+         GARDEN
+      }
+
+      class Participant {
+         -id: int
+         -name: String
+         -role: String
+      }
+
+      class Invitation {
+         id: int
+         event: Event
+         participant: Participant
+         inviteStatus: InviteStatus
+      }
+
+      class InviteStatus {
+         <<enumeration>>
+         PENDING
+         ACCEPTED
+         DECLINED
+      }
+   }
+
+   namespace dao {
+      class EventDao {
+         <<interface>>
+         +findAll() List~Event~
+         +save(Event event) Event
+      }
+
+      class ParticipantDao {
+         <<interface>>
+         +findAll() List~Participant~
+         +save(Participant participant) Participant
+      }
+
+      class InvitationDao {
+         <<interface>>
+         +findAll() List~Invitation~
+         +save(Invitation invitation) Invitation
+      }
+   }
+
+   namespace view {
+      class EventAppView {
+         -scanner: Scanner
+         +getUserInput(String prompt) String
+         +displayMainMenu() void
+         +displayEvents(List~Event~) void
+      }
+   }
+
+   namespace controller {
+      class EventAppController {
+         -eventDao: EventDao
+         -participantDao: ParticipantDao
+         -invitationDao: InvitationDao
+         -eventAppView: View
+      }
+   }
+
+   namespace db {
+      class DatabaseConnection {
+         -URL: String
+         -USER: String
+         -PASSWORD: String
+      }
+   }
 
 ```
 
