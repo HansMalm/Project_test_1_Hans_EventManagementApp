@@ -28,7 +28,7 @@ public class EventAppView {
                     1. Create Event.
                     2. Update Event.
                     3. Delete Event.
-                    0. Exit.
+                    0. Return to Main.
                     """);
     }
 

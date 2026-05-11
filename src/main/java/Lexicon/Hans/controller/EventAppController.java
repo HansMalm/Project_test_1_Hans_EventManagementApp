@@ -24,7 +24,7 @@ public class EventAppController {
         this.view = view;
     }
 
-    public void run() {
+    public void mainMenu() {
         boolean running = true;
         System.out.println("\nWelcome to Event Manager!");
         while (running) {
@@ -62,6 +62,10 @@ public class EventAppController {
         eventDao.save(new Event(title));
     }
 
+    private void updateEvent() {}
+
+    private void deleteEvent() {}
+
     private void createParticipant() {
         String name = EventAppView.getUserInput("Name: ");
 
@@ -84,27 +88,22 @@ public class EventAppController {
     }
     private void eventMenu() {
         boolean running = true;
-        System.out.println("\nWelcome to Event Manager!");
         while (running) {
             EventAppView.displayMainMenu();
-            String input = EventAppView.getUserInput("Choose an option: ");
+            String input = EventAppView.getUserInput("\nChoose an option: ");
 
             switch (input) {
                 case "1":
                     createEvent();
                     break;
                 case "2":
-                    //createParticipant();
+                    updateEvent();
                     break;
                 case "3":
-                    viewEvents();
+                    deleteEvent();
                     break;
                 case "4":
-                    viewParticipants();
-                    break;
-                case "0":
                     running = false;
-                    EventAppView.displayMessage("Exit Program.");
                     break;
                 default:
                     EventAppView.displayMessage("Invalid input!");

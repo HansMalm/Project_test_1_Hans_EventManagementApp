@@ -23,6 +23,6 @@ public class EventManagerApp {
         EventAppView view = new EventAppView();
         EventAppController controller = new EventAppController(eventDao, participantDao, invitationDao, view);
 
-        controller.run();
+        controller.mainMenu();
     }
 }

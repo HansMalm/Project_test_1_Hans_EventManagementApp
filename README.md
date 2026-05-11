@@ -141,10 +141,14 @@ I realize that it makes sense to create a separate class to represent Invitation
 enum in its field. And I create the InvitationDao too. Then add the tables participants and invitations to the  
 database that already contains an app_events table. All tables only have the basic columns of id and or title and  
 participant_name. My implementations of EventDaoImpl and ParticipantDaoImpl constructors currently have the  
-parameter "Connection" like we learned in the JDBC lecture.
-
+parameter "Connection" like we learned in the JDBC lecture.  
 Attempted method overload of methods displayEvents(List<Event> events) and displayParticipants(List<Participant> participants).  
-But that was not allowed by Java in a straightforward way.
+But that was not allowed by Java in a straightforward way.  
+
+**After third implementations:**
+I start working on more CRUD functionality for my event menu and create sub menu methods eventMenu and displayEventMenu  
+in the controller and view. I also realize I will need a place to put filters and consider a processor package.
+
 
 ### Menu runtime Algorithm
 Start  
