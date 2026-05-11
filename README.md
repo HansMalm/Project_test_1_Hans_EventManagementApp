@@ -24,107 +24,127 @@ The system must ensure correct time range and capacity input for events. Prevent
 ## UML Class Diagram
 ```mermaid
 classDiagram
-    direction LR
-    namespace model {
-        class Event {
-            -id: int
-            -title: String
-            -description: String
-            -location: Location
-            -startDate: DateTime
-            -duration: Period
-            -capacity: int
-            
-        }
-    
-        class Location {
-            <<enumeration>>
-            GREAT HALL
-            AUDITORIUM
-            WORKSHOP
-            GARDEN
-        }
-    
-        class Participant {
-            -id: int
-            -name: String
-            -role: String
-        }
-    
-        class Invitation {
-            id: int
-            event: Event
-            participant: Participant
-            inviteStatus: InviteStatus
-        }
-    
-        class InviteStatus {
-            <<enumeration>>
-            PENDING
-            ACCEPTED
-            DECLINED
-        }
-    }
-    
-    namespace dao {
-        class EventDao {
-            <<interface>>
-            +findAll() List~Event~
-            +save(Event event) Event
-        }
-        
-        class ParticipantDao {
-            <<interface>>
-            +findAll() List~Participant~
-            +save(Participant participant) Participant
-        }
-        
-        class InvitationDao {
-            <<interface>>
-            +findAll() List~Invitation~
-            +save(Invitation invitation) Invitation
-        }
-    }
-    
-    namespace view {
-        class EventAppView {
-            -scanner: Scanner
-            +getUserInput(String prompt) String
-            +displayMainMenu() void
-            +displayEvents(List~Event~) void
-        }
-    }
-    
-    namespace controller {
-        class EventAppController {
-            -eventDao: EventDao
-            -participantDao: ParticipantDao
-            -invitationDao: InvitationDao
-            -eventAppView: View
-        }
-    }
-    
-    namespace db {
-        class DatabaseConnection {
-            -URL: String
-            -USER: String
-            -PASSWORD: String
-        } 
-    }
-    
+   direction LR
+   namespace model {
+      class Event {
+         -id: int
+         -title: String
+         -description: String
+         -location: Location
+         -startDate: DateTime
+         -duration: Period
+         -capacity: int
+
+      }
+
+      class Location {
+         <<enumeration>>
+         GREAT HALL
+         AUDITORIUM
+         WORKSHOP
+         GARDEN
+      }
+
+      class Participant {
+         -id: int
+         -name: String
+         -role: String
+      }
+
+      class Invitation {
+         id: int
+         event: Event
+         participant: Participant
+         inviteStatus: InviteStatus
+      }
+
+      class InviteStatus {
+         <<enumeration>>
+         PENDING
+         ACCEPTED
+         DECLINED
+      }
+   }
+
+   namespace dao {
+      class EventDao {
+         <<interface>>
+         +findAll() List~Event~
+         +save(Event event) Event
+      }
+
+      class ParticipantDao {
+         <<interface>>
+         +findAll() List~Participant~
+         +save(Participant participant) Participant
+      }
+
+      class InvitationDao {
+         <<interface>>
+         +findAll() List~Invitation~
+         +save(Invitation invitation) Invitation
+      }
+   }
+
+   namespace view {
+      class EventAppView {
+         -scanner: Scanner
+         +getUserInput(String prompt) String
+         +displayMainMenu() void
+         +displayEvents(List~Event~) void
+      }
+   }
+
+   namespace controller {
+      class EventAppController {
+         -eventDao: EventDao
+         -participantDao: ParticipantDao
+         -invitationDao: InvitationDao
+         -eventAppView: View
+      }
+   }
+
+   namespace db {
+      class DatabaseConnection {
+         -URL: String
+         -USER: String
+         -PASSWORD: String
+      }
+   }
+
 ```
 
 ## Documentation
 ### Problem analysis and design choices.
-Model to contain Event, Location, Participant and InviteStatus classes for the basic building blocks. Consider creating
-a separate class for DateTime since it contains multiple variables, an event has both a starting date and a time period.
-Consider extending Event class to make events share core features but separate specific features.
+**First thoughts:**  
+The Model to contain Event, Location, Participant and InviteStatus classes for the basic building blocks.  
+I give all the model classes their basic fields and methods.  
+Data Access Objects to include the interface EventDao to handle communication with model objects.  
+My first thought is to give this interface the methods save and findAll. But considering to give it a method  
+that creates "Events" and give the method that saves Events to database to some other interface.  
+DatabaseConnection for separate storage of connection information. Started implementing.
 
-Data Access Objects:
-EventDao, first thought is to give this interface the methods save and findAll. But considering to give it a method
-that creates "Events" and give the method that saves Events to database to some other interface.
+**After first implementation:**  
+I decide to give Participant a separate DAO interface named ParticipantDao to keep classes focused.  
+Now adding save and findAll methods to the DAOs like we did in previous workshops. I try and save an Event  
+with only id and title to the database. I create the database in the mySQL Workbench App. Consider adding code later  
+that adds databases and tables from the program if they don't exist. Then I realize that my model classes lack id  
+in their fields and that. I give the event title to the method in hard code since I don't have a create event  
+method yet. The Event is saved successfully.  
+I consider where to store my create event and participant methods and decide to try the MVC design we used in earlier  
+workshop. Now I add controller package with the class EventAppController and give it the run method that will be the  
+main program loop. Then I add the view package with the class EventAppView and give it the first methods  
+displayMainMenu and getUserINput. I start implementing.
 
-DatabaseConnection for separate storage of connection information.
+**After second implementations:**  
+I realize that it makes sense to create a separate class to represent Invitations. It will contain the InviteStatus  
+enum in its field. And I create the InvitationDao too. Then add the tables participants and invitations to the  
+database that already contains an app_events table. All tables only have the basic columns of id and or title and  
+participant_name. My implementations of EventDaoImpl and ParticipantDaoImpl constructors currently have the  
+parameter "Connection" like we learned in the JDBC lecture.
+
+Attempted method overload of methods displayEvents(List<Event> events) and displayParticipants(List<Participant> participants).  
+But that was not allowed by Java in a straightforward way.
 
 ### Menu runtime Algorithm
 Start  
