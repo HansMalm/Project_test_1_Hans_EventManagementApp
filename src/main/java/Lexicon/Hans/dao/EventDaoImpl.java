@@ -58,4 +58,20 @@ public class EventDaoImpl implements EventDao {
 
         return events;
     }
+
+    @Override
+    public void delete(String id) {
+        int intId = Integer.parseInt(id);
+        String sql = "DELETE FROM app_events WHERE id = ?";
+
+        try (
+                PreparedStatement ps = connection.prepareStatement(sql);
+            ) {
+            ps.setInt(1, intId);
+        } catch (SQLException e) {
+        System.err.println("Error deleting event: " + e.getMessage());
+        throw new RuntimeException("Error deleting event", e);
+        }
+    }
+
 }

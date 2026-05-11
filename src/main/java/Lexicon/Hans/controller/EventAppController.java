@@ -64,7 +64,12 @@ public class EventAppController {
 
     private void updateEvent() {}
 
-    private void deleteEvent() {}
+    private void deleteEvent() {
+        viewEvents();
+        String id = EventAppView.getUserInput("Event ID to Delete: ");
+
+        eventDao.delete(id);
+    }
 
     private void createParticipant() {
         String name = EventAppView.getUserInput("Name: ");

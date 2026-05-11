@@ -7,4 +7,5 @@ import java.util.List;
 public interface EventDao {
     void save(Event event);
     List<Event> findAll();
+    void delete(String id);
 }
