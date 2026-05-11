@@ -1,38 +1,28 @@
 package Lexicon.Hans;
 
-import java.util.Scanner;
+import Lexicon.Hans.controller.EventAppController;
+import Lexicon.Hans.dao.*;
+import Lexicon.Hans.db.DatabaseConnection;
+import Lexicon.Hans.view.EventAppView;
+
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class EventManagerApp {
-    static void main() {
 
-        Scanner input = new Scanner(System.in);
-        boolean mainLoop = true;
-        System.out.println("\nWelcome to Event Manager!");
+    static void main() throws SQLException {
 
-        while (mainLoop) {
-            System.out.print("""
-                    Please select an option by input number.
-                    1. Create a new Event.
-                    2. Register participant.
-                    3. View Events.
-                    4. View Participants.
-                    5. Exit.
-                    """);
-            System.out.print("Input: ");
-            int choice = input.nextInt();
-            switch (choice) {
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    System.out.println("Exit. Program closing.");
-                    mainLoop = false;
-            }
-        }
+        DataSource dataSource = DatabaseConnection.getMysqlDataSource();
+        Connection connection = dataSource.getConnection();
+        System.out.println("Connected to EventApp Database.");
+
+        EventDao eventDao = new EventDaoImpl(connection);
+        ParticipantDao participantDao = new ParticipantDaoImpl(connection);
+        InvitationDao invitationDao = new InvitationDaoImpl(connection);
+        EventAppView view = new EventAppView();
+        EventAppController controller = new EventAppController(eventDao, participantDao, invitationDao, view);
+
+        controller.run();
     }
 }
