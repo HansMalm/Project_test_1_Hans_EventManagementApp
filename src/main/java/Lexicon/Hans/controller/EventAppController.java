@@ -34,7 +34,6 @@ public class EventAppController {
             switch (input) {
                 case "1":
                     eventMenu();
-                    //createEvent();
                     break;
                 case "2":
                     participantMenu();
@@ -57,12 +56,14 @@ public class EventAppController {
     }
 
     private void createEvent() {
-        String title = EventAppView.getUserInput("Event Title: ");
+        String title = EventAppView.getUserInput("Enter Event Title: ");
 
         eventDao.save(new Event(title));
     }
 
-    private void updateEvent() {}
+    private void updateEvent() {
+        System.out.println("This feature is not yet implemented!");
+    }
 
     private void deleteEvent() {
         viewEvents();
@@ -71,15 +72,25 @@ public class EventAppController {
         eventDao.delete(id);
     }
 
+    private void viewEvents() {
+        List<Event> events = eventDao.findAll();
+        EventAppView.displayEvents(events);
+    }
+
     private void createParticipant() {
         String name = EventAppView.getUserInput("Name: ");
 
         participantDao.save(new Participant(name));
     }
 
-    private void viewEvents() {
-        List<Event> events = eventDao.findAll();
-        EventAppView.displayEvents(events);
+    private void updateParticipant() {
+        System.out.println("This feature is not yet implemented!");
+    }
+
+    private void deleteParticipant() {
+        viewParticipants();
+        String id = EventAppView.getUserInput("Enter Participant ID to Delete: ");
+        participantDao.delete(id);
     }
 
     private void viewParticipants() {
@@ -117,6 +128,29 @@ public class EventAppController {
     }
 
     private void participantMenu() {
+
+        boolean running = true;
+        while (running) {
+            EventAppView.displayParticipantMenu();
+            String input = EventAppView.getUserInput("\nChoose an option: ");
+
+            switch (input) {
+                case "1":
+                    createParticipant();
+                    break;
+                case "2":
+                    updateParticipant();
+                    break;
+                case "3":
+                    deleteParticipant();
+                    break;
+                case "0":
+                    running = false;
+                    break;
+                default:
+                    EventAppView.displayMessage("Invalid input!");
+            }
+        }
 
     }
 }

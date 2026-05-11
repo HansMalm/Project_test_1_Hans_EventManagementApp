@@ -33,6 +33,7 @@ public class EventDaoImpl implements EventDao {
             System.err.println("Error saving event : " + e.getMessage());
             throw  new RuntimeException("Error saving event", e);
         }
+        System.out.println("Event Created!");
     }
 
     @Override

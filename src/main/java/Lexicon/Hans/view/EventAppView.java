@@ -32,6 +32,16 @@ public class EventAppView {
                     """);
     }
 
+    public static void displayParticipantMenu() {
+        System.out.print("""
+                    \nPlease select an option.
+                    1. Register Participant.
+                    2. Update Participant.
+                    3. Delete Participant.
+                    0. Return to Main.
+                    """);
+    }
+
     public static String getUserInput(String prompt) {
         System.out.print(prompt);
         return scanner.nextLine();
