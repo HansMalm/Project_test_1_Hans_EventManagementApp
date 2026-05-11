@@ -58,6 +58,7 @@ public class EventAppView {
 
         System.out.println("\nAll Events.");
         System.out.println("ID Title");
+        System.out.println("-------------------------------------------");
         events.forEach(System.out::println);
     }
 

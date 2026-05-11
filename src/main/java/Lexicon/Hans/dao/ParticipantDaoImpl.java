@@ -35,6 +35,22 @@ public class ParticipantDaoImpl implements ParticipantDao{
     }
 
     @Override
+    public void delete(String id) {
+        int intId = Integer.parseInt(id);
+        String sql = "DELETE FROM participants WHERE id = ?";
+        try (
+                PreparedStatement ps = connection.prepareStatement(sql);
+        ) {
+            ps.setInt(1, intId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error deleting participant: " + e.getMessage());
+            throw new RuntimeException("Error deleting participant", e);
+        }
+        System.out.println("Participant removed!");
+    }
+
+    @Override
     public List<Participant> findAll() {
 
         List<Participant> participants = new ArrayList<>();
