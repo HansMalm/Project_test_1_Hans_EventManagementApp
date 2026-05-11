@@ -24,8 +24,8 @@ The system must ensure correct time range and capacity input for events. Prevent
 ## UML Class Diagram
 ```mermaid
 classDiagram
-    direction LR
-    namespace model {
+   direction LR
+   namespace model {
       class Event {
          -id: int
          -title: String
@@ -146,7 +146,7 @@ parameter "Connection" like we learned in the JDBC lecture.
 Attempted method overload of methods displayEvents(List<Event> events) and displayParticipants(List<Participant> participants).  
 But that was not allowed by Java in a straightforward way.
 
-### Program runtime Algorithm
+### Menu runtime Algorithm
 Start  
 Display Main Menu
 1. Create new Event
