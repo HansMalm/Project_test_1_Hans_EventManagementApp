@@ -33,10 +33,12 @@ public class EventAppController {
 
             switch (input) {
                 case "1":
-                    createEvent();
+                    eventMenu();
+                    //createEvent();
                     break;
                 case "2":
-                    createParticipant();
+                    participantMenu();
+                    //createParticipant();
                     break;
                 case "3":
                     viewEvents();
@@ -79,5 +81,38 @@ public class EventAppController {
     private void viewInvitations() {
         List<Invitation> invitations = invitationDao.findAll();
         //EventAppView.d
+    }
+    private void eventMenu() {
+        boolean running = true;
+        System.out.println("\nWelcome to Event Manager!");
+        while (running) {
+            EventAppView.displayMainMenu();
+            String input = EventAppView.getUserInput("Choose an option: ");
+
+            switch (input) {
+                case "1":
+                    createEvent();
+                    break;
+                case "2":
+                    //createParticipant();
+                    break;
+                case "3":
+                    viewEvents();
+                    break;
+                case "4":
+                    viewParticipants();
+                    break;
+                case "0":
+                    running = false;
+                    EventAppView.displayMessage("Exit Program.");
+                    break;
+                default:
+                    EventAppView.displayMessage("Invalid input!");
+            }
+        }
+    }
+
+    private void participantMenu() {
+
     }
 }

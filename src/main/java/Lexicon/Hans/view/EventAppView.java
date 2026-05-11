@@ -14,10 +14,20 @@ public class EventAppView {
     public static void displayMainMenu() {
         System.out.print("""
                     \nPlease select an option.
-                    1. Create a new Event.
-                    2. Register Participant.
+                    1. Create and manage Events.
+                    2. Register and manage Participants.
                     3. View Events.
                     4. View Participants.
+                    0. Exit.
+                    """);
+    }
+
+    public static void displayEventMenu() {
+        System.out.print("""
+                    \nPlease select an option.
+                    1. Create Event.
+                    2. Update Event.
+                    3. Delete Event.
                     0. Exit.
                     """);
     }
