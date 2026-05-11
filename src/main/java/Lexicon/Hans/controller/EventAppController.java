@@ -94,7 +94,7 @@ public class EventAppController {
     private void eventMenu() {
         boolean running = true;
         while (running) {
-            EventAppView.displayMainMenu();
+            EventAppView.displayEventMenu();
             String input = EventAppView.getUserInput("\nChoose an option: ");
 
             switch (input) {
@@ -107,7 +107,7 @@ public class EventAppController {
                 case "3":
                     deleteEvent();
                     break;
-                case "4":
+                case "0":
                     running = false;
                     break;
                 default:
