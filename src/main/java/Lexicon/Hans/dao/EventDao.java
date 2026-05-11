@@ -1,8 +1,10 @@
 package Lexicon.Hans.dao;
 
-import Lexicon.Hans.dao.Event;
+import Lexicon.Hans.Model.Event;
+
+import java.util.List;
 
 public interface EventDao {
-    Event save(Event event);
+    void save(Event event);
     List<Event> findAll();
 }
