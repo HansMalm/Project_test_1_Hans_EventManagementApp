@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.List;
 
 public class InvitationDaoImpl implements InvitationDao {
-
+    //All DAOs connect to the DataBase.
     private final Connection connection;
 
     public InvitationDaoImpl(Connection connection) {

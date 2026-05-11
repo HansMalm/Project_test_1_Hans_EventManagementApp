@@ -3,6 +3,7 @@ package Lexicon.Hans.Model;
 import java.time.LocalDateTime;
 import java.time.Period;
 
+//Each Event should have a startDate in the future. And the maximum capacity should be respected.
 public class Event {
 
     int id;
@@ -12,7 +13,6 @@ public class Event {
     //LocalDateTime startDate;
     //Period duration;
     //int capacity
-
 
     public Event(int id, String title) {
         this.id = id;
@@ -39,6 +39,7 @@ public class Event {
         this.id = id;
     }
 
+    //Rewrite this method, it currently is tailored for event menu methods.
     @Override
     public String toString() {
         return id + ": " + title;

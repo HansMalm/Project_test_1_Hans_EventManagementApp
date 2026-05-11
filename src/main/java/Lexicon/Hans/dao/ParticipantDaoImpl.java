@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParticipantDaoImpl implements ParticipantDao{
+
+    //All DAOs connect to the DataBase
     private final Connection connection;
 
     public ParticipantDaoImpl(Connection connection) {

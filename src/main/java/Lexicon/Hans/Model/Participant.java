@@ -1,5 +1,6 @@
 package Lexicon.Hans.Model;
 
+//Consider creating code for the role value "individual" so it is not spelled incorrectly by users.
 public class Participant {
 
     int id;
@@ -32,7 +33,8 @@ public class Participant {
     public void setName(String name) {
         this.name = name;
     }
-/*
+
+    /*
     public String getRole() {
         return role;
     }
@@ -41,6 +43,7 @@ public class Participant {
         this.role = role;
     }*/
 
+    //Rewrite this method, it is currently tailored for participant menu.
     @Override
     public String toString() {
         return id + ": " + name;

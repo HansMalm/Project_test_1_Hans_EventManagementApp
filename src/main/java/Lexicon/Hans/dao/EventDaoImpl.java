@@ -8,6 +8,7 @@ import java.util.List;
 
 public class EventDaoImpl implements EventDao {
 
+    //All DAOs connect to the DataBase.
     private final Connection connection;
 
     public EventDaoImpl(Connection connection) {

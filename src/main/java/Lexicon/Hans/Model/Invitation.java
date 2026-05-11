@@ -1,5 +1,6 @@
 package Lexicon.Hans.Model;
 
+//The DataBase is configured to remove invitations that contain an Event or Participant that is removed.
 public class Invitation {
     int id;
     Event event;

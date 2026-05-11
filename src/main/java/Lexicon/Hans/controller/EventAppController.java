@@ -10,6 +10,7 @@ import Lexicon.Hans.view.EventAppView;
 
 import java.util.List;
 
+//The Controller manages communication between the DAOs and the View.
 public class EventAppController {
 
     EventDao eventDao;
@@ -172,7 +173,6 @@ public class EventAppController {
     }
 
     private void invitationsMenu() {
-
 
         boolean running = true;
         while (running) {

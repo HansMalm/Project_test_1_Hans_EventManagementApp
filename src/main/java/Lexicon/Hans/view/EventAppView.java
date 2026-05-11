@@ -7,6 +7,7 @@ import Lexicon.Hans.Model.Participant;
 import java.util.List;
 import java.util.Scanner;
 
+//The View contains most of the console output.
 public class EventAppView {
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -53,6 +54,7 @@ public class EventAppView {
         """);
     }
 
+    //Scanning user input is done by reusing this method.
     public static String getUserInput(String prompt) {
         System.out.print(prompt);
         return scanner.nextLine();
@@ -69,7 +71,7 @@ public class EventAppView {
 
         System.out.println("\nAll Events.");
         System.out.println("ID Title");
-        System.out.println("-------------------------------------------");
+        System.out.println("------------------------------------------");
         events.forEach(System.out::println);
     }
 
@@ -80,6 +82,7 @@ public class EventAppView {
 
         System.out.println("\nAll Participants.");
         System.out.println("ID Name");
+        System.out.println("------------------------------------------");
         participants.forEach(System.out::println);
     }
 
