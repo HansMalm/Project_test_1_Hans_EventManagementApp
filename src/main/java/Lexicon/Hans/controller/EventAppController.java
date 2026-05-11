@@ -78,6 +78,6 @@ public class EventAppController {
 
     private void viewInvitations() {
         List<Invitation> invitations = invitationDao.findAll();
-        EventAppView.d
+        //EventAppView.d
     }
 }
