@@ -4,12 +4,17 @@ public class Participant {
 
     int id;
     String name;
-    String role;
+    //String role;
 
-    public Participant(String name, String role) {
-        this.id = 0;
+    public Participant(int id, String name) {
+        this.id = id;
         this.name = name;
-        this.role = role;
+        //this.role = role;
+    }
+
+    public Participant(String name) {
+        this.name = name;
+        //this.role = role;
     }
 
     public int getId() {
@@ -27,12 +32,17 @@ public class Participant {
     public void setName(String name) {
         this.name = name;
     }
-
+/*
     public String getRole() {
         return role;
     }
 
     public void setRole(String role) {
         this.role = role;
+    }*/
+
+    @Override
+    public String toString() {
+        return id + ": " + name;
     }
 }

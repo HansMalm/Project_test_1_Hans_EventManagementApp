@@ -14,8 +14,12 @@ public class Event {
     //int capacity
 
 
+    public Event(int id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
     public Event(String title) {
-        this.id = 0;
         this.title = title;
     }
 
@@ -33,5 +37,10 @@ public class Event {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return id + ": " + title;
     }
 }

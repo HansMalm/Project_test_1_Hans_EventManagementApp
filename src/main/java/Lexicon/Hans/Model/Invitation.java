@@ -6,11 +6,17 @@ public class Invitation {
     Participant participant;
     InviteStatus inviteStatus;
 
-    public Invitation(Event event, Participant participant, InviteStatus inviteStatus) {
-        this.id = 0;
+    public Invitation(int id, Event event, Participant participant, InviteStatus inviteStatus) {
+        this.id = id;
         this.event = event;
         this.participant = participant;
         this.inviteStatus = InviteStatus.PENDING;
+    }
+
+    public Invitation(Event event, Participant participant, InviteStatus inviteStatus) {
+        this.event = event;
+        this.participant = participant;
+        this.inviteStatus = inviteStatus;
     }
 
     public int getId() {
