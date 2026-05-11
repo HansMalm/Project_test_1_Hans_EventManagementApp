@@ -61,6 +61,31 @@ public class EventDaoImpl implements EventDao {
     }
 
     @Override
+    public Event findById(String id) {
+        int indId = Integer.parseInt(id);
+        String sql = "SELECT id, title FROM app_events WHERE id = ?";
+
+        try (
+                PreparedStatement ps = connection.prepareStatement(sql)
+        ) {
+            ps.setInt(1, indId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new Event(
+                        rs.getInt("id"),
+                        rs.getString("title")
+                );
+            }
+            System.out.println("Selected Event " + rs.getInt("id") + " " +  rs.getString("title"));
+
+        } catch (SQLException e) {
+            System.err.println("Error fetching event : " + e.getMessage());
+            throw  new RuntimeException("Error fetching event", e);
+        }
+        return null;
+    }
+
+    @Override
     public void delete(String id) {
         int intId = Integer.parseInt(id);
         String sql = "DELETE FROM app_events WHERE id = ?";

@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface EventDao {
     void save(Event event);
-    List<Event> findAll();
     void delete(String id);
+    List<Event> findAll();
+    Event findById(String id);
 }

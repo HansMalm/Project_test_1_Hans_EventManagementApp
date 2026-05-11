@@ -103,15 +103,20 @@ public class EventAppController {
         viewEvents();
         String id = EventAppView.getUserInput("\nChoose an Event by ID: ");
 
+
     }
 
-    private  void updateInvitation() {}
+    private  void updateInvitation() {
+        System.out.println("This feature is not yet implemented!");
+    }
 
-    private void deleteInvitation() {}
+    private void deleteInvitation() {
+        System.out.println("This feature is not yet implemented!");
+    }
 
     private void viewInvitations() {
         List<Invitation> invitations = invitationDao.findAll();
-        //EventAppView.d
+        EventAppView.displayInvitations(invitations);
     }
 
     private void eventMenu() {
