@@ -37,14 +37,15 @@ public class EventAppController {
                     break;
                 case "2":
                     participantMenu();
-                    //createParticipant();
                     break;
                 case "3":
-                    viewEvents();
+                    invitationsMenu();
                     break;
                 case "4":
-                    viewParticipants();
+                    viewEvents();
                     break;
+                case "5":
+                    viewParticipants();
                 case "0":
                     running = false;
                     EventAppView.displayMessage("Exit Program.");
@@ -98,10 +99,21 @@ public class EventAppController {
         EventAppView.displayParticipants(participants);
     }
 
+    private void createInvitation() {
+        viewEvents();
+        String id = EventAppView.getUserInput("\nChoose an Event by ID: ");
+
+    }
+
+    private  void updateInvitation() {}
+
+    private void deleteInvitation() {}
+
     private void viewInvitations() {
         List<Invitation> invitations = invitationDao.findAll();
         //EventAppView.d
     }
+
     private void eventMenu() {
         boolean running = true;
         while (running) {
@@ -152,5 +164,32 @@ public class EventAppController {
             }
         }
 
+    }
+
+    private void invitationsMenu() {
+
+
+        boolean running = true;
+        while (running) {
+            EventAppView.displayInvitationsMenu();
+            String input = EventAppView.getUserInput("\nChoose an option: ");
+
+            switch (input) {
+                case "1":
+                    createInvitation();
+                    break;
+                case "2":
+                    updateInvitation();
+                    break;
+                case "3":
+                    deleteInvitation();
+                    break;
+                case "0":
+                    running = false;
+                    break;
+                default:
+                    EventAppView.displayMessage("Invalid input!");
+            }
+        }
     }
 }

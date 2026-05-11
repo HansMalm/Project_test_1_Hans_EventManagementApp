@@ -145,10 +145,18 @@ parameter "Connection" like we learned in the JDBC lecture.
 Attempted method overload of methods displayEvents(List<Event> events) and displayParticipants(List<Participant> participants).  
 But that was not allowed by Java in a straightforward way.  
 
-**After third implementations:**
+**After third implementations:**  
 I start working on more CRUD functionality for my event menu and create sub menu methods eventMenu and displayEventMenu  
 in the controller and view. I also realize I will need a place to put filters and consider a processor package.
+I implement delete event and participant menu and methods. They work as intended for their individual tables.  
+But when I try to delete an event or participant that is linked in the invitations table I get an error.  
+So now I learn about ways to handle this. I will try to configure my database to use the ON DELETE CASCADE keywords.  
+I also learn that deleting the dependent record in invitations table before the record in the parent table works.
+Implemented ON DELETE CASCADE, and it works as intended now.  
 
+**After fourth implementations**  
+After starting work on the invitations menu I realize that I will need findById methods for all tables. So I will  
+implement that in the DAOs. In order to be able to select specific Events, Participants and Invitations.
 
 ### Menu runtime Algorithm
 Start  

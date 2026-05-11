@@ -16,8 +16,9 @@ public class EventAppView {
                     \nPlease select an option.
                     1. Create and manage Events.
                     2. Register and manage Participants.
-                    3. View Events.
-                    4. View Participants.
+                    3. Manage Invitations.
+                    4. View Events.
+                    5. View Participants.
                     0. Exit.
                     """);
     }
@@ -40,6 +41,16 @@ public class EventAppView {
                     3. Delete Participant.
                     0. Return to Main.
                     """);
+    }
+
+    public static void displayInvitationsMenu() {
+        System.out.print("""
+                    \nPlease select an option.
+                    1. Invite Participants.
+                    2. Update Invitation Status.
+                    3. Remove Invitation.
+                    0. Return to Main.
+        """);
     }
 
     public static String getUserInput(String prompt) {
