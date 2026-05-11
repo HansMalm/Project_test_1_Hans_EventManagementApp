@@ -66,7 +66,7 @@ public class EventAppController {
 
     private void deleteEvent() {
         viewEvents();
-        String id = EventAppView.getUserInput("Event ID to Delete: ");
+        String id = EventAppView.getUserInput("Enter Event ID to Delete: ");
 
         eventDao.delete(id);
     }

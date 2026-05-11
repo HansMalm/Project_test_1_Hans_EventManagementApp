@@ -68,10 +68,12 @@ public class EventDaoImpl implements EventDao {
                 PreparedStatement ps = connection.prepareStatement(sql);
             ) {
             ps.setInt(1, intId);
+            ps.executeUpdate();
         } catch (SQLException e) {
         System.err.println("Error deleting event: " + e.getMessage());
         throw new RuntimeException("Error deleting event", e);
         }
+        System.out.println("Event deleted!");
     }
 
 }
