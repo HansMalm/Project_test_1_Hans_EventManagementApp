@@ -14,7 +14,7 @@ public class InvitationDaoImpl implements InvitationDao {
     }
 
     @Override
-    public Invitation save(Invitation invitation) {
+    public void save(Invitation invitation) {
         String sql = "INSERT INTO invitations (title) VALUES (?)";
 
         try (
@@ -32,7 +32,6 @@ public class InvitationDaoImpl implements InvitationDao {
             System.err.println("Error saving invitation : " + e.getMessage());
             throw  new RuntimeException("Error saving invitation", e);
         }
-        return invitation;
     }
 
     @Override

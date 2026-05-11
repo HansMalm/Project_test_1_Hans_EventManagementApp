@@ -5,6 +5,6 @@ import Lexicon.Hans.Model.Invitation;
 import java.util.List;
 
 public interface InvitationDao {
-    Invitation save(Invitation invitation);
+    void save(Invitation invitation);
     List<Invitation> findAll();
 }
