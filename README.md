@@ -117,8 +117,8 @@ classDiagram
 ## Documentation
 ### Problem analysis and design choices.
 **First thoughts:**  
-Model to contain Event, Location, Participant and InviteStatus classes for the basic building blocks.  
-I give all the model classes their basic fields.  
+The Model to contain Event, Location, Participant and InviteStatus classes for the basic building blocks.  
+I give all the model classes their basic fields and methods.  
 Data Access Objects to include the interface EventDao to handle communication with model objects.  
 My first thought is to give this interface the methods save and findAll. But considering to give it a method  
 that creates "Events" and give the method that saves Events to database to some other interface.  
@@ -142,6 +142,9 @@ enum in its field. And I create the InvitationDao too. Then add the tables parti
 database that already contains an app_events table. All tables only have the basic columns of id and or title and  
 participant_name. My implementations of EventDaoImpl and ParticipantDaoImpl constructors currently have the  
 parameter "Connection" like we learned in the JDBC lecture.
+
+Attempted method overload of methods displayEvents(List<Event> events) and displayParticipants(List<Participant> participants).  
+But that was not allowed by Java in a straightforward way.
 
 ### Program runtime Algorithm
 Start  
