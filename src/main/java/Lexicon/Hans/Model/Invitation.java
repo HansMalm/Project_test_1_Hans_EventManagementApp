@@ -44,6 +44,14 @@ public class Invitation {
         this.participant = participant;
     }
 
+    public InviteStatus getInviteStatus() {
+        return inviteStatus;
+    }
+
+    public void setInviteStatus(InviteStatus inviteStatus) {
+        this.inviteStatus = inviteStatus;
+    }
+
     @Override
     public String toString() {
         return "Invitation{" + "id=" + id + ", event=" + event + ", participant=" + participant;
