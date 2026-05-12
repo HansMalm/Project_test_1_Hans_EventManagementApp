@@ -156,7 +156,9 @@ Implemented ON DELETE CASCADE, and it works as intended now.
 
 **After fourth implementations**  
 After starting work on the invitations menu I realize that I will need findById methods for all tables. So I will  
-implement that in the DAOs. In order to be able to select specific Events, Participants and Invitations.
+implement that in the DAOs. In order to be able to select specific Events, Participants and Invitations.  
+The Controller is getting larger than any class I have written before. Considering separating the controller into  
+smaller parts.
 
 ### Menu runtime Algorithm
 Start  

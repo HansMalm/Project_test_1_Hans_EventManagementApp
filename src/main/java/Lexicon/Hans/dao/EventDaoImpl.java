@@ -17,7 +17,7 @@ public class EventDaoImpl implements EventDao {
 
     @Override
     public void save(Event event) {
-        String sql = "INSERT INTO app_events (title) VALUES (?)";
+        String sql = "INSERT INTO events (title) VALUES (?)";
 
         try (
                 PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -41,7 +41,7 @@ public class EventDaoImpl implements EventDao {
     public List<Event> findAll() {
 
         List<Event> events = new ArrayList<>();
-        String sql = "SELECT * FROM app_events";
+        String sql = "SELECT * FROM events";
 
         try (
                 PreparedStatement ps = connection.prepareStatement(sql);
@@ -64,7 +64,7 @@ public class EventDaoImpl implements EventDao {
     @Override
     public Event findById(String id) {
         int indId = Integer.parseInt(id);
-        String sql = "SELECT id, title FROM app_events WHERE id = ?";
+        String sql = "SELECT id, title FROM events WHERE id = ?";
 
         try (
                 PreparedStatement ps = connection.prepareStatement(sql)
@@ -89,7 +89,7 @@ public class EventDaoImpl implements EventDao {
     @Override
     public void delete(String id) {
         int intId = Integer.parseInt(id);
-        String sql = "DELETE FROM app_events WHERE id = ?";
+        String sql = "DELETE FROM events WHERE id = ?";
 
         try (
                 PreparedStatement ps = connection.prepareStatement(sql);

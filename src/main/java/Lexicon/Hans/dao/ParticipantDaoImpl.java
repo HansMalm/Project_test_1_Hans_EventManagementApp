@@ -17,7 +17,7 @@ public class ParticipantDaoImpl implements ParticipantDao{
 
     @Override
     public void save(Participant participant) {
-        String sql = "INSERT INTO participants (participant_name) VALUES (?)";
+        String sql = "INSERT INTO participants (name) VALUES (?)";
 
         try (
                 PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -65,7 +65,7 @@ public class ParticipantDaoImpl implements ParticipantDao{
             while(rs.next()) {
                 participants.add(new Participant(
                         rs.getInt("id"),
-                        rs.getString("participant_name")
+                        rs.getString("name")
                 ));
             }
         } catch (SQLException e) {
