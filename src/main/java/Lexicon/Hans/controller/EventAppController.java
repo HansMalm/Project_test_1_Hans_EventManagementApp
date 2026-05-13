@@ -96,9 +96,10 @@ public class EventAppController {
         participantDao.delete(id);
     }
 
-    private void viewParticipants() {
+    private List<Participant> viewParticipants() {
         List<Participant> participants = participantDao.findAll();
         EventAppView.displayParticipants(participants);
+        return  participants;
     }
 
     private void createInvitation() {
@@ -111,8 +112,10 @@ public class EventAppController {
         System.out.println("Selected Event: " + selectedEvent.getId() + " " + selectedEvent.getTitle());
         //Display Participants not yet invited to the Event and store them for next step.
         System.out.println("\nList of Participants");
-        viewParticipants();
-        //
+        List<Participant> participants =
+        //get list of invitations for the selected event.
+        //save a list of participants
+
     }
 
     private  void updateInvitation() {
