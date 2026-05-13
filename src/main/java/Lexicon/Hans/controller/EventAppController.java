@@ -74,9 +74,10 @@ public class EventAppController {
         eventDao.delete(id);
     }
 
-    private void viewEvents() {
+    private List<Event> viewEvents() {
         List<Event> events = eventDao.findAll();
         EventAppView.displayEvents(events);
+        return  events;
     }
 
     private void createParticipant() {
@@ -101,10 +102,17 @@ public class EventAppController {
     }
 
     private void createInvitation() {
-        viewEvents();
+        //First Display available Events and store them for next the step.
+        List<Event> events = viewEvents();
         String id = EventAppView.getUserInput("\nChoose an Event by ID: ");
-
-
+        int intId = Integer.parseInt(id);
+        //Find the selected Event and store it for the next step.
+        Event selectedEvent = eventDao.findById(events, intId);
+        System.out.println("Selected Event: " + selectedEvent.getId() + " " + selectedEvent.getTitle());
+        //Display Participants not yet invited to the Event and store them for next step.
+        System.out.println("\nList of Participants");
+        viewParticipants();
+        //
     }
 
     private  void updateInvitation() {
